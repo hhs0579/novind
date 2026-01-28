@@ -4,7 +4,12 @@
       <div class="footer-content">
         <div class="footer-section">
           <div class="footer-logo">
-            <img v-if="logoExists" :src="logoSrc" alt="Novind Logo" class="logo" />
+            <img
+              v-if="logoExists"
+              :src="logoSrc"
+              alt="Novind Logo"
+              class="logo"
+            />
             <span v-else class="logo-text">NOVIND</span>
           </div>
           <p class="footer-description">
@@ -12,30 +17,34 @@
             고객의 비즈니스 성장을 함께합니다.
           </p>
         </div>
-        
+
         <div class="footer-section">
           <h4 class="footer-title">빠른 링크</h4>
           <ul class="footer-links">
             <li><a href="#home" @click="scrollTo('home')">홈</a></li>
             <li><a href="#about" @click="scrollTo('about')">소개</a></li>
-            <li><a href="#services" @click="scrollTo('services')">서비스</a></li>
-            <li><a href="#capabilities" @click="scrollTo('capabilities')">역량</a></li>
-            <li><a href="#portfolio" @click="scrollTo('portfolio')">포트폴리오</a></li>
+            <li>
+              <a href="#services" @click="scrollTo('services')">서비스</a>
+            </li>
+            <li>
+              <a href="#capabilities" @click="scrollTo('capabilities')">역량</a>
+            </li>
+            <li>
+              <a href="#portfolio" @click="scrollTo('portfolio')">포트폴리오</a>
+            </li>
             <li><a href="#contact" @click="scrollTo('contact')">문의</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-section">
           <h4 class="footer-title">연락처</h4>
           <ul class="footer-contact">
             <li>📧 contact@novind.site</li>
             <li>📱 010-3035-8049</li>
-      
           </ul>
         </div>
-        
       </div>
-      
+
       <div class="footer-bottom">
         <p>&copy; {{ currentYear }} NOVIND. All rights reserved.</p>
       </div>
@@ -44,31 +53,31 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
-const currentYear = new Date().getFullYear()
+const currentYear = new Date().getFullYear();
 
-const logoSrc = '/images/logo.png'
-const logoExists = ref(true)
+const logoSrc = "/images/logo.png";
+const logoExists = ref(true);
 
 onMounted(() => {
   // 로고 파일 존재 여부 확인
-  const img = new Image()
+  const img = new Image();
   img.onload = () => {
-    logoExists.value = true
-  }
+    logoExists.value = true;
+  };
   img.onerror = () => {
-    logoExists.value = false
-  }
-  img.src = logoSrc
-})
+    logoExists.value = false;
+  };
+  img.src = logoSrc;
+});
 
 const scrollTo = (section) => {
-  const element = document.getElementById(section)
+  const element = document.getElementById(section);
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-}
+};
 </script>
 
 <style scoped>
@@ -160,7 +169,6 @@ const scrollTo = (section) => {
   font-size: 0.95rem;
 }
 
-
 .footer-bottom {
   border-top: 1px solid #e5e5e5;
   padding-top: 2rem;
@@ -173,7 +181,7 @@ const scrollTo = (section) => {
   .footer {
     padding: 3rem 1rem 1.5rem;
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr;
     gap: 2rem;
